@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA y escritura académica: ¿aliada o atajo? — Juan Camilo Higuita Quiroga</title>
+<meta name="description" content="Infografía interactiva sobre el uso ético de la inteligencia artificial en la escritura académica y creativa. Universidad Minuto de Dios, 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   SISTEMA DE DISEÑO
+   Paleta: crema, salvia, rosa polvo, lavanda, verde bosque, champagne
+   Tipografía: Cormorant Garamond (titulares) + Inter (cuerpo)
+   ========================================================================== */
+:root {
+  /* Fondos */
+  --bg-main: #F8F5EF;        /* crema principal */
+  --bg-card: #FBFAF7;        /* hueso claro */
+  --bg-soft: #EFECE5;        /* gris cálido suave */
+  --bg-deep: #1f1d1b;        /* carbón profundo */
+
+  /* Acentos pastel */
+  --salvia: #B8C5B0;         /* uso responsable ✓ */
+  --salvia-deep: #6B8062;
+  --rosa: #E5C9C5;           /* riesgo ⚠ */
+  --rosa-deep: #9C6F6A;
+  --lavanda: #C9C4D9;        /* datos neutrales */
+  --lavanda-deep: #6F6989;
+  --crema-claro: #E8DCC4;    /* destaque cálido */
+  --azul-polvo: #B8C9D6;     /* info complementaria */
+
+  /* Contraste */
+  --texto: #2B2A28;
+  --texto-soft: #6B6863;
+  --texto-mute: #948F88;
+  --verde-bosque: #3A4A3F;   /* títulos y acentos */
+  --champagne: #B8A77A;      /* líneas finas, separadores premium */
+
+  /* Tipografía */
+  --font-serif: 'Cormorant Garamond', 'Georgia', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Espaciado */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  /* Bordes */
+  --border-thin: 1px solid var(--champagne);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--texto);
+  background: var(--bg-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   NAVEGACIÓN
+   ========================================================================== */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(248, 245, 239, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(184, 167, 122, 0.3);
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--verde-bosque);
+  letter-spacing: 0.02em;
+}
+.nav-links {
+  display: flex;
+  gap: 1.75rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.85rem;
+  color: var(--texto-soft);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+  position: relative;
+}
+.nav-links a:hover { color: var(--verde-bosque); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--champagne);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover::after { width: 100%; }
+@media (max-width: 768px) {
+  .nav { padding: 0.6rem 1.2rem; }
+  .nav-links { display: none; }
+}
+
+/* ==========================================================================
+   HERO / PORTADA
+   ========================================================================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 8rem 2rem 4rem;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(184, 197, 176, 0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(229, 201, 197, 0.15) 0%, transparent 50%),
+    var(--bg-main);
+  overflow: hidden;
+}
+.hero-inner {
+  max-width: 880px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--verde-bosque);
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--champagne);
+  border-radius: 100px;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  background: rgba(251, 250, 247, 0.6);
+}
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--verde-bosque);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--rosa-deep);
+  font-weight: 400;
+}
+.hero-subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-style: italic;
+  color: var(--texto-soft);
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.5;
+}
+.hero-meta {
+  font-size: 0.8rem;
+  color: var(--texto-mute);
+  letter-spacing: 0.05em;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(184, 167, 122, 0.4);
+  display: inline-block;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.hero-meta strong { color: var(--texto); font-weight: 600; }
+.scroll-cue {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--texto-mute);
+  text-align: center;
+  animation: bounce 2.5s infinite;
+}
+.scroll-cue::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 30px;
+  background: var(--champagne);
+  margin: 0.5rem auto 0;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ==========================================================================
+   SECCIONES GENERALES
+   ========================================================================== */
+section {
+  padding: 5rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  scroll-margin-top: 60px;
+}
+section.tinted {
+  background: var(--bg-soft);
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+section.tinted > .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.section-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rosa-deep);
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 500;
+  color: var(--verde-bosque);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  letter-spacing: -0.005em;
+}
+.section-lead {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--texto-soft);
+  line-height: 1.5;
+  max-width: 720px;
+  margin-bottom: 3rem;
+}
+
+/* ==========================================================================
+   SECCIÓN 1 — CONTEXTO
+   ========================================================================== */
+.context-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0 3rem;
+}
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(184, 167, 122, 0.3);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px -2px rgba(60, 70, 50, 0.08);
+  border-color: var(--champagne);
+}
+.stat-number {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--verde-bosque);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--texto-soft);
+  line-height: 1.4;
+}
+
+.timeline {
+  position: relative;
+  padding: 1.5rem 0;
+  margin: 2rem 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 30px; bottom: 30px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--salvia), var(--champagne));
+}
+.timeline-item {
+  position: relative;
+  padding-left: 65px;
+  margin-bottom: 2rem;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: 8px;
+  top: 6px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--salvia);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--salvia-deep);
+}
+.timeline-year {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--verde-bosque);
+  margin-bottom: 0.2rem;
+}
+.timeline-text {
+  color: var(--texto-soft);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   SECCIÓN 2 — LONDOÑO (géneros académicos)
+   ========================================================================== */
+.genres-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+.genre-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(184, 167, 122, 0.3);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.genre-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--salvia);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.genre-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px -4px rgba(60, 70, 50, 0.1); }
+.genre-card:hover::before { transform: scaleX(1); }
+.genre-icon {
+  width: 48px; height: 48px;
+  background: var(--salvia);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.2rem;
+  color: var(--verde-bosque);
+}
+.genre-card:nth-child(2) .genre-icon { background: var(--rosa); }
+.genre-card:nth-child(3) .genre-icon { background: var(--lavanda); }
+.genre-name {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--verde-bosque);
+  margin-bottom: 0.5rem;
+}
+.genre-desc {
+  font-size: 0.92rem;
+  color: var(--texto-soft);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+.genre-more {
+  font-size: 0.78rem;
+  color: var(--verde-bosque);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.genre-more svg { transition: transform 0.2s ease; }
+.genre-card:hover .genre-more svg { transform: translateX(3px); }
+
+.metaescritura-box {
+  background: linear-gradient(135deg, rgba(184, 197, 176, 0.2), rgba(232, 220, 196, 0.25));
+  border-left: 3px solid var(--verde-bosque);
+  border-radius: var(--radius-md);
+  padding: 1.8rem 2rem;
+  margin-top: 2rem;
+}
+.metaescritura-box h4 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--verde-bosque);
+  margin-bottom: 0.6rem;
+  font-style: italic;
+}
+.metaescritura-box p {
+  color: var(--texto);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   SECCIÓN 3 — DATOS GALINDO-DOMÍNGUEZ
+   ========================================================================== */
+.data-viz {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  margin: 2.5rem 0;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .data-viz { grid-template-columns: 1fr; gap: 2rem; }
+}
+.bench-chart { padding: 1.5rem 0; }
+.bench-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 60px;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.6rem 0;
+}
+.bench-label {
+  font-size: 0.95rem;
+  color: var(--texto);
+  font-weight: 500;
+}
+.bench-bar-bg {
+  height: 22px;
+  background: var(--bg-soft);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+.bench-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--salvia), #6B8062);
+  border-radius: 6px;
+  width: 0;
+  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.bench-row--mujeres .bench-bar-fill {
+  background: linear-gradient(90deg, var(--rosa), #9C6F6A);
+}
+.bench-val {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--verde-bosque);
+  text-align: right;
+}
+.bench-caption {
+  font-size: 0.78rem;
+  color: var(--texto-mute);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+.data-insight {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  border: 1px solid rgba(184, 167, 122, 0.3);
+}
+.data-insight h4 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--verde-bosque);
+  margin-bottom: 1rem;
+}
+.data-insight ul {
+  list-style: none;
+  padding: 0;
+}
+.data-insight li {
+  font-size: 0.9rem;
+  color: var(--texto-soft);
+  padding: 0.5rem 0 0.5rem 1.4rem;
+  position: relative;
+  line-height: 1.5;
+  border-bottom: 1px dashed rgba(184, 167, 122, 0.3);
+}
+.data-insight li:last-child { border-bottom: none; }
+.data-insight li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 1rem;
+  width: 8px; height: 8px;
+  background: var(--champagne);
+  border-radius: 50%;
+}
+
+.callout-card {
+  background: linear-gradient(135deg, rgba(201, 196, 217, 0.25), rgba(184, 201, 214, 0.2));
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.8rem;
+  margin: 2rem 0;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.callout-icon {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  background: var(--bg-card);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lavanda-deep);
+}
+.callout-text {
+  font-size: 0.95rem;
+  color: var(--texto);
+  line-height: 1.55;
+}
+.callout-text strong { color: var(--verde-bosque); }
+
+/* ==========================================================================
+   SECCIÓN 4 — APOYO VS. REEMPLAZO (tabs interactivos)
+   ========================================================================== */
+.tabs-container {
+  background: var(--bg-card);
+  border: 1px solid rgba(184, 167, 122, 0.3);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin: 2.5rem 0;
+}
+.tabs-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--bg-soft);
+  border-bottom: 1px solid rgba(184, 167, 122, 0.3);
+}
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 1.5rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--texto-soft);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.tab-btn.active {
+  background: var(--bg-card);
+  color: var(--verde-bosque);
+  font-weight: 600;
+}
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 2px;
+  background: var(--verde-bosque);
+}
+.tab-btn[data-tab="apoyo"].active::after { background: var(--salvia-deep); }
+.tab-btn[data-tab="reemplazo"].active::after { background: var(--rosa-deep); }
+.tab-btn:hover:not(.active) { color: var(--texto); background: rgba(184, 167, 122, 0.08); }
+
+.tab-content {
+  padding: 2.5rem 2rem;
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+.tab-content.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.tab-content h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+  color: var(--verde-bosque);
+}
+.tab-content[data-tab="apoyo"] h3 { color: var(--salvia-deep); }
+.tab-content[data-tab="reemplazo"] h3 { color: var(--rosa-deep); }
+.tab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.tab-item {
+  background: var(--bg-soft);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.2rem;
+  font-size: 0.92rem;
+  color: var(--texto);
+  line-height: 1.45;
+  border-left: 3px solid var(--salvia);
+}
+.tab-content[data-tab="reemplazo"] .tab-item { border-left-color: var(--rosa); }
+.tab-item strong { display: block; color: var(--verde-bosque); margin-bottom: 0.3rem; font-weight: 600; }
+.tab-content[data-tab="reemplazo"] .tab-item strong { color: var(--rosa-deep); }
+
+/* ==========================================================================
+   SECCIÓN 5 — TRES REGLAS ÉTICAS
+   ========================================================================== */
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+.rule-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(184, 167, 122, 0.3);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.rule-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 4px;
+  background: linear-gradient(90deg, var(--salvia), var(--verde-bosque));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.rule-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px -4px rgba(60, 70, 50, 0.1); }
+.rule-card:hover::before { transform: scaleX(1); }
+.rule-number {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--champagne);
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+.rule-name {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--verde-bosque);
+  margin-bottom: 0.8rem;
+}
+.rule-desc {
+  font-size: 0.95rem;
+  color: var(--texto-soft);
+  line-height: 1.55;
+}
+.rule-question {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--champagne);
+  font-size: 0.88rem;
+  color: var(--verde-bosque);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   SECCIÓN 6 — CONCLUSIÓN + AUDIO + VIDEO
+   ========================================================================== */
+.conclusion {
+  text-align: center;
+  padding: 5rem 2rem 6rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.conclusion-quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 500;
+  color: var(--verde-bosque);
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  font-style: italic;
+  position: relative;
+}
+.conclusion-quote::before,
+.conclusion-quote::after {
+  content: '"';
+  font-size: 4rem;
+  color: var(--champagne);
+  font-style: normal;
+  line-height: 0.5;
+  display: inline-block;
+  vertical-align: -0.2em;
+  margin: 0 0.3rem;
+  font-family: var(--font-serif);
+}
+.audio-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: var(--bg-card);
+  border: 1px solid var(--champagne);
+  border-radius: 100px;
+  padding: 0.7rem 1.4rem;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--verde-bosque);
+  font-weight: 500;
+  margin: 1.5rem 0 3rem;
+  transition: all 0.25s ease;
+}
+.audio-control:hover {
+  background: var(--verde-bosque);
+  color: var(--bg-card);
+  border-color: var(--verde-bosque);
+}
+.audio-control.playing { background: var(--verde-bosque); color: var(--bg-card); }
+.audio-icon {
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--salvia);
+  border-radius: 50%;
+  color: var(--verde-bosque);
+  transition: all 0.25s ease;
+}
+.audio-control:hover .audio-icon { background: var(--bg-card); color: var(--verde-bosque); }
+.audio-control.playing .audio-icon { background: var(--bg-card); color: var(--verde-bosque); }
+
+.video-section {
+  margin-top: 3rem;
+}
+.video-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--verde-bosque);
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+.video-subtitle {
+  font-size: 0.85rem;
+  color: var(--texto-soft);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+.video-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-deep);
+  box-shadow: 0 12px 32px -8px rgba(60, 70, 50, 0.2);
+}
+.video-embed iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+
+/* ==========================================================================
+   FOOTER — FUENTES Y CRÉDITOS
+   ========================================================================== */
+footer {
+  background: var(--bg-deep);
+  color: #C8C0B0;
+  padding: 4rem 2rem 2rem;
+  margin-top: 4rem;
+}
+footer .container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+.footer-section h4 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--champagne);
+  margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.footer-section p, .footer-section li {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #B0A99B;
+}
+.footer-section ul { list-style: none; padding: 0; }
+.footer-section li { margin-bottom: 0.8rem; }
+.footer-section a {
+  color: var(--salvia);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer-section a:hover { color: var(--crema-claro); }
+.footer-bottom {
+  border-top: 1px solid rgba(184, 167, 122, 0.2);
+  padding-top: 1.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--texto-mute);
+  letter-spacing: 0.03em;
+}
+.footer-bottom strong { color: var(--champagne); font-weight: 500; }
+
+/* ==========================================================================
+   MODAL
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 29, 27, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.2s ease;
+}
+.modal-backdrop.open { display: flex; }
+.modal {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  max-width: 540px;
+  width: 100%;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalIn 0.3s ease;
+}
+@keyframes modalIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.modal-close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--texto-soft);
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+.modal-close:hover { background: var(--bg-soft); color: var(--texto); }
+.modal h3 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--verde-bosque);
+  margin-bottom: 0.3rem;
+}
+.modal-subtitle {
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rosa-deep);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.modal p {
+  font-size: 0.95rem;
+  color: var(--texto);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.modal-example {
+  background: var(--bg-soft);
+  border-left: 3px solid var(--verde-bosque);
+  padding: 1rem 1.2rem;
+  border-radius: 6px;
+  font-style: italic;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--texto);
+  margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   UTILIDADES
+   ========================================================================== */
+.text-center { text-align: center; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-6 { margin-top: 2.5rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- ==========================================================================
+     NAVEGACIÓN FIJA
+     ========================================================================== -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">IA y escritura</div>
+  <ul class="nav-links">
+    <li><a href="#contexto">Contexto</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#datos">Datos</a></li>
+    <li><a href="#apoyo-reemplazo">Apoyo / Reemplazo</a></li>
+    <li><a href="#reglas">Reglas</a></li>
+    <li><a href="#cierre">Cierre</a></li>
+  </ul>
+</nav>
+
+<!-- ==========================================================================
+     HERO / PORTADA
+     ========================================================================== -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Proyecto integrador III</span>
+    <h1>IA y escritura académica:<br><em>¿aliada o atajo?</em></h1>
+    <p class="hero-subtitle">Una guía ética desde la formación, no desde la prohibición. Sobre cómo decidir, declarar y mantener la voz propia cuando la inteligencia artificial ya está en la universidad.</p>
+    <div class="hero-meta">
+      <strong>Juan Camilo Higuita Quiroga</strong> · Ingeniería de Sistemas · UNIMINUTO<br>
+      NRC69653 — Lectura y Escritura en el Contexto Digital · Docente Alba Luz Sanchez Escudero<br>
+      12 de octubre de 2026
+    </div>
+  </div>
+  <div class="scroll-cue">desplaza</div>
+</header>
+
+<!-- ==========================================================================
+     SECCIÓN 1 — CONTEXTO
+     ========================================================================== -->
+<section id="contexto" class="fade-in">
+  <div class="section-eyebrow">01 · Contexto</div>
+  <h2 class="section-title">La IA ya está en la universidad</h2>
+  <p class="section-lead">La pregunta no es si la inteligencia artificial entra al aula, porque ya entró. La pregunta es cómo nos formamos para usarla con criterio.</p>
+
+  <div class="context-stats">
+    <div class="stat-card">
+      <span class="stat-number" data-counter="507">0</span>
+      <div class="stat-label">Estudiantes universitarios analizados en el estudio de referencia</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">1.87<span style="font-size:1.2rem;color:var(--texto-mute)">/5</span></span>
+      <div class="stat-label">Media global de uso de ChatGPT con fines académicos (uso moderadamente bajo)</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number" data-counter="2022">0</span>
+      <div class="stat-label">Año en que ChatGPT llegó al público general y disparó el debate</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number" data-counter="2026">0</span>
+      <div class="stat-label">Año actual: la IA ya está integrada en casi cualquier editor</div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot">22</div>
+      <div class="timeline-year">Noviembre 2022</div>
+      <div class="timeline-text">ChatGPT llega al público general. Empieza el debate sobre su uso en educación.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">23</div>
+      <div class="timeline-year">2023</div>
+      <div class="timeline-text">Grammarly lanza GrammarlyGO. Proliferan Claude, Gemini, Perplexity, QuillBot. Las universidades reaccionan con políticas.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">24</div>
+      <div class="timeline-year">2024</div>
+      <div class="timeline-text">Galindo-Domínguez y su equipo publican su estudio clave: el uso es bajo pero desigual, con perfiles definidos.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">26</div>
+      <div class="timeline-year">2026</div>
+      <div class="timeline-text">La IA está integrada en Google Docs, Word, Notion, navegadores. La pregunta ya no es "si", sino "cómo".</div>
+    </div>
+  </div>
+
+  <div class="callout-card">
+    <div class="callout-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    </div>
+    <div class="callout-text">
+      <strong>Lo que los datos muestran:</strong> el uso es moderadamente bajo, pero heterogéneo. Eso obliga a pensar políticas <strong>diferenciadas</strong>, no universales.
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     SECCIÓN 2 — LONDOÑO (escritura como proceso)
+     ========================================================================== -->
+<section id="proceso" class="tinted fade-in">
+  <div class="container">
+    <div class="section-eyebrow">02 · Proceso formativo</div>
+    <h2 class="section-title">La escritura no es un producto, es un proceso</h2>
+    <p class="section-lead">Londoño Zapata (2020) recuerda que la universidad debe cultivar tres géneros académicos donde el estudiante aprende a pensar, citar y argumentar. La IA puede acompañar ese proceso, pero no debería borrarlo.</p>
+
+    <div class="genres-grid">
+      <div class="genre-card" data-modal="resena">
+        <div class="genre-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div class="genre-name">Reseña</div>
+        <div class="genre-desc">Lectura comprensiva y paráfrasis. El estudiante reconfirma su lectura e ingresa a una comunidad académica.</div>
+        <div class="genre-more">
+          Ver ejemplo
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+
+      <div class="genre-card" data-modal="monografia">
+        <div class="genre-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+        </div>
+        <div class="genre-name">Monografía</div>
+        <div class="genre-desc">Organización de un tema con fuentes. Exige investigar, jerarquizar y construir una voz propia sobre el asunto.</div>
+        <div class="genre-more">
+          Ver ejemplo
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+
+      <div class="genre-card" data-modal="ensayo">
+        <div class="genre-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        </div>
+        <div class="genre-name">Ensayo</div>
+        <div class="genre-desc">Género argumentativo que revela la autonomía intelectual. El estudiante defiende su punto de vista con criterio.</div>
+        <div class="genre-more">
+          Ver ejemplo
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="metaescritura-box">
+      <h4>Concepto clave · Metaescritura</h4>
+      <p>"La metaescritura es la reflexión sobre la escritura con la propia escritura" (Londoño Zapata). Es decir, no basta con entregar un texto: hay que poder explicar por qué se escribió así, qué se cambió, qué se sacrificó. Si no podés explicar tu ensayo, no lo escribiste — lo recibiste.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     SECCIÓN 3 — DATOS GALINDO-DOMÍNGUEZ
+     ========================================================================== -->
+<section id="datos" class="fade-in">
+  <div class="section-eyebrow">03 · Lo que dicen los datos</div>
+  <h2 class="section-title">El uso no es uniforme, es por perfiles</h2>
+  <p class="section-lead">Galindo-Domínguez y sus colegas (2024) estudiaron a 507 estudiantes universitarios. El uso promedio es bajo, pero hay diferencias claras según género, año académico y grado. Eso obliga a políticas diferenciadas.</p>
+
+  <div class="data-viz">
+    <div class="bench-chart">
+      <h4 style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--verde-bosque); margin-bottom: 1rem;">Uso promedio de ChatGPT por género<br><span style="font-size: 0.85rem; color: var(--texto-mute); font-weight: 400; font-style: italic;">(escala 1–5; p &lt; 0.001)</span></h4>
+      <div class="bench-row bench-row--hombres">
+        <span class="bench-label">Hombres</span>
+        <div class="bench-bar-bg"><div class="bench-bar-fill" data-width="43.8"></div></div>
+        <span class="bench-val">2.19</span>
+      </div>
+      <div class="bench-row bench-row--mujeres">
+        <span class="bench-label">Mujeres</span>
+        <div class="bench-bar-bg"><div class="bench-bar-fill" data-width="34.8"></div></div>
+        <span class="bench-val">1.74</span>
+      </div>
+      <p class="bench-caption">M = 1.87; DT = 0.930. Diferencia estadísticamente significativa, tamaño de efecto pequeño (d ≈ 0.073).</p>
+    </div>
+
+    <div class="data-insight">
+      <h4>Hallazgos clave</h4>
+      <ul>
+        <li><strong style="color:var(--verde-bosque)">Año académico:</strong> mayor uso en cursos intermedios (2.º–3.º), no en primero ni en últimos semestres.</li>
+        <li><strong style="color:var(--verde-bosque)">Grado:</strong> Educación Primaria lidera el uso, posiblemente por la cantidad de tareas escritas extensas.</li>
+        <li><strong style="color:var(--verde-bosque)">Edad:</strong> no hay diferencias significativas — la edad no es el factor.</li>
+        <li><strong style="color:var(--verde-bosque)">Implicación:</strong> la formación debe ser <em>diferenciada</em>, no universal.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-card">
+    <div class="callout-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <div class="callout-text">
+      <strong>Lectura para esta infografía:</strong> si los perfiles existen, la ética no puede ser una sola regla. La respuesta es <strong>formación por perfiles</strong>, no prohibición general.
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     SECCIÓN 4 — APOYO VS. REEMPLAZO
+     ========================================================================== -->
+<section id="apoyo-reemplazo" class="tinted fade-in">
+  <div class="container">
+    <div class="section-eyebrow">04 · La misma herramienta, dos usos</div>
+    <h2 class="section-title">Apoyo <span style="color:var(--rosa-deep)">vs.</span> Reemplazo</h2>
+    <p class="section-lead">La diferencia no está en la herramienta. Está en qué le pedís que haga por vos. Hacé clic en cada pestaña para ver ejemplos concretos.</p>
+
+    <div class="tabs-container">
+      <div class="tabs-header">
+        <button class="tab-btn active" data-tab="apoyo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          APOYO
+        </button>
+        <button class="tab-btn" data-tab="reemplazo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          REEMPLAZO
+        </button>
+      </div>
+
+      <div class="tab-content active" data-tab="apoyo">
+        <h3>Cuando la IA potencia tu aprendizaje</h3>
+        <p>Le pedís ayuda en lo mecánico y lo complementario. Vos seguís siendo quien piensa, decide y argumenta. El proceso formativo se mantiene.</p>
+        <div class="tab-grid">
+          <div class="tab-item"><strong>Lluvia de ideas</strong>Bloqueo de escritor. Le pedís 5 ángulos posibles para tu ensayo y elegís uno.</div>
+          <div class="tab-item"><strong>Revisión de estilo</strong>Escribís un borrador, le pedís que señale redundancias, y vos decidís qué cambiar.</div>
+          <div class="tab-item"><strong>Explicar conceptos</strong>No entendés un paper. Le pedís que te lo explique en tus términos antes de citarlo.</div>
+          <div class="tab-item"><strong>Accesibilidad</strong>Apoyo para compañeros con dificultades de escritura o dislexia. Nivelación, no sustitución.</div>
+          <div class="tab-item"><strong>Segunda lectura crítica</strong>Le pedís que identifique debilidades en tu argumento. Vos validás cada una.</div>
+          <div class="tab-item"><strong>Práctica de exposición</strong>"Haceme preguntas sobre mi tema como si fueras el profesor."</div>
+        </div>
+      </div>
+
+      <div class="tab-content" data-tab="reemplazo">
+        <h3>Cuando la IA te quita el proceso</h3>
+        <p>Le pedís que haga el trabajo cognitivo que te corresponde. El resultado puede tener buena nota, pero no tiene tu aprendizaje detrás. Y si alguien te pregunta, no podés defenderlo.</p>
+        <div class="tab-grid">
+          <div class="tab-item"><strong>Pegar la consigna y listo</strong>"Haceme el ensayo sobre X." Entrega sin haber leído lo que entregaste.</div>
+          <div class="tab-item"><strong>Copiar y pegar</strong>Tomar párrafos textuales, no citarlos, y presentarlos como propios.</div>
+          <div class="tab-item"><strong>No leer lo entregado</strong>Confiar en que la herramienta "sabe". Saltarte la supervisión crítica.</div>
+          <div class="tab-item"><strong>Atajo para nota</strong>Usar la IA para subir promedio sin aprender el tema. La próxima vez cuesta más.</div>
+          <div class="tab-item"><strong>No poder explicar</strong>Si te preguntan sobre tu ensayo y no podés conversar, no era tuyo.</div>
+          <div class="tab-item"><strong>Dependencia creciente</strong>Cada vez necesitás más ayuda para tareas más simples. Eso es atrofia, no formación.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     SECCIÓN 5 — TRES REGLAS ÉTICAS
+     ========================================================================== -->
+<section id="reglas" class="fade-in">
+  <div class="section-eyebrow">05 · Recomendaciones</div>
+  <h2 class="section-title">Tres reglas simples para no perderse</h2>
+  <p class="section-lead">La ética no es abstracta. Se puede llevar a tres reglas que cualquiera puede aplicar antes de entregar un trabajo.</p>
+
+  <div class="rules-grid">
+    <div class="rule-card">
+      <div class="rule-number">01</div>
+      <div class="rule-name">Declarar</div>
+      <div class="rule-desc">Cita toda asistencia de IA. No como confesión, sino como transparencia: este párrafo lo generé, este lo reescribí, este es mío. La citación no es un trámite, es honestidad.</div>
+      <div class="rule-question">"¿Podría mostrarle a mi profesor exactamente qué partes hice con ayuda?"</div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-number">02</div>
+      <div class="rule-name">Supervisar</div>
+      <div class="rule-desc">Lee, cuestiona, reescribe. La herramienta propone, vos decidís. Ningún output de IA está libre de errores, sesgos o lugares comunes. Tu criterio sigue siendo el filtro final.</div>
+      <div class="rule-question">"¿Entendí lo suficiente del tema como para explicarlo sin la herramienta?"</div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-number">03</div>
+      <div class="rule-name">Cuidar la voz</div>
+      <div class="rule-desc">Que la IA no borre tu forma de pensar ni tu estilo. Si tu texto suena a vos, aprendiste. Si suena a manual, lo delegaste. La voz se construye escribiéndola, no pidiéndosela a un modelo.</div>
+      <div class="rule-question">"¿Esto me deja mejor preparado para el próximo trabajo, o más dependiente?"</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     SECCIÓN 6 — CONCLUSIÓN + AUDIO + VIDEO
+     ========================================================================== -->
+<section id="cierre" class="fade-in">
+  <div class="conclusion">
+    <div class="section-eyebrow text-center">06 · Cierre</div>
+    <h2 class="section-title" style="margin-bottom: 2rem;">La decisión queda en tus manos</h2>
+    <p class="conclusion-quote">La IA no viene a reemplazarnos; viene a obligarnos a decidir —cada vez que la encendemos— si estamos pensando con ella o dejando de pensar por ella.</p>
+
+    <button class="audio-control" id="audioBtn" aria-label="Escuchar la conclusión">
+      <span class="audio-icon">
+        <svg id="playIcon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <svg id="pauseIcon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+      </span>
+      <span id="audioLabel">Escuchar esta conclusión</span>
+    </button>
+
+    <div class="video-section">
+      <h3 class="video-title">Para profundizar</h3>
+      <p class="video-subtitle">Una charla breve sobre el uso ético de la IA en la escritura académica</p>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/EM2hdeHcaeQ?start=36" title="IA y la Transformación de la Escritura Académica" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size: 0.8rem; color: var(--texto-mute); margin-top: 0.8rem; text-align: center; font-style: italic;">Fuente: Fernando Juca Maldonado — Daily Tech News Podcast (2024)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h4>Fuentes citadas</h4>
+        <ul>
+          <li>
+            <strong style="color: var(--crema-claro)">Galindo-Domínguez, H., Delgado, N., Campo, L., & Sainz de la Maza, M. (2024).</strong>
+            Uso de ChatGPT en educación superior. Un análisis en función del género, rendimiento académico, año y grado universitario del alumnado.
+            <em>Revista de Docencia Universitaria (REDU), 22</em>(2), 16–30.
+            <a href="https://doi.org/10.4995/redu.2024.21647" target="_blank" rel="noopener">doi.org/10.4995/redu.2024.21647</a>
+          </li>
+          <li>
+            <strong style="color: var(--crema-claro)">Londoño Zapata, O. I. (2020).</strong>
+            Escribir en la Universidad ¿gusto, interés o deber? En
+            <em>De la memoria a la reflexión: la escritura en la universidad</em> (pp. 210–225). Buenos Aires: Editorial Biblos. ISBN 978-987-691-843-5.
+          </li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Créditos</h4>
+        <p>
+          <strong style="color: var(--crema-claro)">Autor:</strong> Juan Camilo Higuita Quiroga<br>
+          <strong style="color: var(--crema-claro)">Carrera:</strong> Ingeniería de Sistemas · UNIMINUTO<br>
+          <strong style="color: var(--crema-claro)">Curso:</strong> NRC69653 — Lectura y Escritura en el Contexto Digital<br>
+          <strong style="color: var(--crema-claro)">Docente:</strong> Alba Luz Sanchez Escudero<br>
+          <strong style="color: var(--crema-claro)">Fecha:</strong> 12 de octubre de 2026
+        </p>
+        <p style="margin-top: 1rem;">
+          Infografía interactiva diseñada como pieza de código abierto. Diseño: paleta neutra + pasteles · Tipografía: Cormorant Garamond + Inter.
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <strong>Proyecto integrador III — La IA y la ética</strong> · Universidad Minuto de Dios · 2026
+    </div>
+  </div>
+</footer>
+
+<!-- ==========================================================================
+     MODAL — DETALLE DE GÉNEROS
+     ========================================================================== -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Cerrar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="modal-subtitle" id="modalEyebrow">Género académico</div>
+    <h3 id="modalTitle">—</h3>
+    <p id="modalDesc">—</p>
+    <div class="modal-example" id="modalExample">—</div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     JAVASCRIPT
+     ========================================================================== -->
+<script>
+// Datos para los modales de géneros
+const GENRES = {
+  resena: {
+    eyebrow: "Género 01",
+    title: "Reseña",
+    desc: "La reseña es el primer género que todo estudiante debe cultivar. A través de la paráfrasis o la glosa de un texto, el estudiante confirma su comprensión e ingresa paulatinamente a los dominios de una comunidad académica. Es formativa porque obliga a leer de verdad, no a pasar los ojos.",
+    example: "Ejemplo: reseñar el paper de Galindo-Domínguez obliga a comprender qué midieron, qué encontraron y por qué importa — no se puede parafrasear sin entender."
+  },
+  monografia: {
+    eyebrow: "Género 02",
+    title: "Monografía",
+    desc: "La monografía exige organizar un tema con fuentes. Es donde aparece la voz propia: el estudiante jerarquiza autores, identifica debates y construye una postura sobre el asunto. Es formativa porque enseña a investigar y a integrar, no a repetir.",
+    example: "Ejemplo: en una monografía sobre IA en la universidad, hay que leer a Londoño, a Galindo-Domínguez, contrastarlos y defender un argumento. La IA puede ayudar a ordenar, pero la integración es tuya."
+  },
+  ensayo: {
+    eyebrow: "Género 03",
+    title: "Ensayo",
+    desc: "El ensayo es el género más autónomo. Revela la madurez intelectual del estudiante: ya recorrió los textos, ya comprende los debates, y ahora puede defender su punto de vista. Es donde la metaescritura se nota más: podés explicar por qué pensás lo que pensás.",
+    example: "Ejemplo: un buen ensayo sobre IA y ética no enumera autores — toma posición, la argumenta y la sostiene con criterio. Si solo resume, no es ensayo."
+  }
+};
+
+// === Tabs ===
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelector(`.tab-content[data-tab="${tab}"]`).classList.add('active');
+  });
+});
+
+// === Modal de géneros ===
+const modalBackdrop = document.getElementById('modalBackdrop');
+const modalTitle = document.getElementById('modalTitle');
+const modalEyebrow = document.getElementById('modalEyebrow');
+const modalDesc = document.getElementById('modalDesc');
+const modalExample = document.getElementById('modalExample');
+
+document.querySelectorAll('.genre-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const key = card.dataset.modal;
+    const data = GENRES[key];
+    if (!data) return;
+    modalTitle.textContent = data.title;
+    modalEyebrow.textContent = data.eyebrow;
+    modalDesc.textContent = data.desc;
+    modalExample.textContent = data.example;
+    modalBackdrop.classList.add('open');
+  });
+});
+
+document.getElementById('modalClose').addEventListener('click', () => {
+  modalBackdrop.classList.remove('open');
+});
+modalBackdrop.addEventListener('click', (e) => {
+  if (e.target === modalBackdrop) modalBackdrop.classList.remove('open');
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') modalBackdrop.classList.remove('open');
+});
+
+// === Audio TTS para la conclusión ===
+const audioBtn = document.getElementById('audioBtn');
+const audioLabel = document.getElementById('audioLabel');
+const playIcon = document.getElementById('playIcon');
+const pauseIcon = document.getElementById('pauseIcon');
+const conclusionText = "La IA no viene a reemplazarnos; viene a obligarnos a decidir —cada vez que la encendemos— si estamos pensando con ella o dejando de pensar por ella.";
+
+let utterance = null;
+let isSpeaking = false;
+
+function speak() {
+  if (!('speechSynthesis' in window)) {
+    audioLabel.textContent = 'Tu navegador no soporta audio';
+    audioBtn.disabled = true;
+    return;
+  }
+  window.speechSynthesis.cancel();
+  utterance = new SpeechSynthesisUtterance(conclusionText);
+  utterance.lang = 'es-ES';
+  utterance.rate = 0.92;
+  utterance.pitch = 1;
+  // Intentar usar una voz en español
+  const voices = window.speechSynthesis.getVoices();
+  const esVoice = voices.find(v => v.lang.startsWith('es'));
+  if (esVoice) utterance.voice = esVoice;
+  utterance.onend = () => stopAudio();
+  utterance.onerror = () => stopAudio();
+  window.speechSynthesis.speak(utterance);
+  isSpeaking = true;
+  audioBtn.classList.add('playing');
+  playIcon.style.display = 'none';
+  pauseIcon.style.display = 'inline';
+  audioLabel.textContent = 'Detener audio';
+}
+
+function stopAudio() {
+  window.speechSynthesis.cancel();
+  isSpeaking = false;
+  audioBtn.classList.remove('playing');
+  playIcon.style.display = 'inline';
+  pauseIcon.style.display = 'none';
+  audioLabel.textContent = 'Escuchar esta conclusión';
+}
+
+audioBtn.addEventListener('click', () => {
+  if (isSpeaking) stopAudio();
+  else speak();
+});
+
+// Cargar voces
+if ('speechSynthesis' in window) {
+  window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+}
+
+// === Animación de barras y contadores ===
+function animateBars() {
+  document.querySelectorAll('.bench-bar-fill').forEach(bar => {
+    const width = bar.dataset.width;
+    if (width) bar.style.width = width + '%';
+  });
+}
+function animateCounters() {
+  document.querySelectorAll('[data-counter]').forEach(el => {
+    const target = parseInt(el.dataset.counter, 10);
+    const duration = 1500;
+    const start = performance.now();
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased).toLocaleString('es-CO');
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+// === IntersectionObserver para fade-in y animaciones ===
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      if (entry.target.querySelector('.bench-bar-fill')) animateBars();
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Observer específico para los stat cards
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounters();
+      statObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+const statsSection = document.querySelector('.context-stats');
+if (statsSection) statObserver.observe(statsSection);
+
+// === Resaltar link activo en nav ===
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('section, header.hero');
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && entry.target.id) {
+      navLinks.forEach(a => a.style.color = '');
+      const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+      if (active) active.style.color = 'var(--verde-bosque)';
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => navObserver.observe(s));
+</script>
+
+</body>
+</html>
